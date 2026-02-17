@@ -39,9 +39,15 @@ begin
 
   clear <= btnC;
 
-  -- *****************************
-  -- *  synkroniseringsvippor    *
-  -- *****************************
+  -- Synkronisering av RsRx
+  process(clk)
+  begin
+    if rising_edge(clk) then
+    rx1 <= RsRx;
+    rx2 <= rx1;
+    end if;
+  end process;
+
 
 
 
