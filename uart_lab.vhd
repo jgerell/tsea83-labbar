@@ -82,15 +82,15 @@ begin
         sp      <= '1';
         counter <= counter + 1;
 
+      elsif s1 = '1' and counter = 434 and bit_count = 9 then
+        lp        <= '1';
+        s1        <= '0';
+        counter   <= (others => '0');
+        bit_count <= (others => '0');
+
       elsif s1 = '1' and counter = 867 then
-        counter <= (others => '0');
-        if bit_count = 9 then
-          lp        <= '1';
-          s1        <= '0';
-          bit_count <= (others => '0');
-        else
-          bit_count <= bit_count + 1;
-        end if;
+        counter   <= (others => '0');
+        bit_count <= bit_count + 1;
 
       elsif s1 = '1' then
         counter <= counter + 1;
@@ -140,10 +140,10 @@ begin
         hex4 <= (others => '0');
       elsif lp = '1' then
         case pos is
-          when "00"   => hex4(3  downto 0)  <= sreg(4 downto 1);
-          when "01"   => hex4(7  downto 4)  <= sreg(4 downto 1);
-          when "10"   => hex4(11 downto 8)  <= sreg(4 downto 1);
-          when others => hex4(15 downto 12) <= sreg(4 downto 1);
+          when "00"   => hex4(15 downto 12) <= sreg(4 downto 1);
+          when "01"   => hex4(11 downto 8)  <= sreg(4 downto 1);
+          when "10"   => hex4(7  downto 4)  <= sreg(4 downto 1);
+          when others => hex4(3  downto 0)  <= sreg(4 downto 1);
         end case;
       end if;
     end if;
