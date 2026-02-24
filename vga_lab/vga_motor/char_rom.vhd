@@ -72,13 +72,13 @@ begin
 		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- D
-		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
-		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
-		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
-		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
-		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
-		x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",
+		x"f1a",x"CC0",x"f1a",x"CC0",x"f1a",x"FFF",x"FFF",x"FFF",  -- D
+		x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",x"CC0",x"CC0",x"FFF",
+		x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",x"CC0",x"CC0",x"FFF",
+		x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",x"CC0",x"CC0",x"FFF",
+		x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",x"CC0",x"CC0",x"FFF",
+		x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",x"CC0",x"CC0",x"FFF",
+		x"CC0",x"CC0",x"CC0",x"CC0",x"CC0",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
 		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- E
