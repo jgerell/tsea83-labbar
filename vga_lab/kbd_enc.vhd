@@ -73,12 +73,16 @@ begin
 
 
 	-- PS2 data shift register
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2Data_sr                     *
-	-- *                                 *
-	-- ***********************************
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if rst = '1' then
+				PS2Data_sr <= (others => '0');
+			elsif PS2Clk_op = '1' then
+				PS2Data_sr <= PS2Data & PS2Data_sr(10 downto 1);
+			end if;
+		end if;
+	end process;
 
 
         
@@ -89,25 +93,45 @@ begin
 
 
 	-- PS2 bit counter
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2BitCounter & BC11           *
-	-- *                                 *
-	-- ***********************************
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if rst = '1' or BC11 = '1' then
+				PS2BitCounter <= (others => '0');
+			elsif PS2Clk_op = '1' then
+				PS2BitCounter <= PS2BitCounter + 1;
+			end if;
+		end if;
+	end process;
+
+	BC11 <= '1' when PS2BitCounter = 11 else '0';
 
 
 
-        -- PS2 state
-	-- Either MAKE or BREAK state is identified from the scancode
-	-- Only single character scan codes are identified
-	-- The behavior of multiple character scan codes is undefined
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2State                       *
-	-- *                                 *
-	-- ***********************************
+	-- PS2 state machine
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if rst = '1' then
+				PS2state <= IDLE;
+			else
+				case PS2state is
+					when IDLE =>
+						if BC11 = '1' then
+							if ScanCode_int = x"F0" then
+								PS2state <= BREAK;
+							else
+								PS2state <= MAKE;
+							end if;
+						end if;
+					when MAKE =>
+						PS2state <= IDLE;
+					when BREAK =>
+						PS2state <= IDLE;
+				end case;
+			end if;
+		end if;
+	end process;
 
 
 
