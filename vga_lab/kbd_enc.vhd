@@ -87,8 +87,8 @@ begin
 
         
 
-        ScanCode_int <= PS2Data_sr(8 downto 1); -- To be used internally
-	ScanCode <= ScanCode_int;  -- Not allowed to read from out signal
+        ScanCode_int <= PS2Data_sr(8 downto 1);
+	ScanCode <= ScanCode_int;
 
 
 
@@ -127,7 +127,9 @@ begin
 					when MAKE =>
 						PS2state <= IDLE;
 					when BREAK =>
-						PS2state <= IDLE;
+						if BC11 = '1' then
+							PS2state <= IDLE;
+						end if;
 				end case;
 			end if;
 		end if;
